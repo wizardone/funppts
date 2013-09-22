@@ -1,0 +1,22 @@
+
+<div class="button_content">
+
+	{if $ppt->get_converted()}
+		<!-- <a class="button button_right" href="{page_url page=view id=$ppt->get_obj_id() share=1}#share" >Send</a>-->
+		<a class="button button_right" href="{page_url_f page=share id=$ppt->get_obj_id()}#share" >Send</a>	
+		{if $login_enabled}<a class="button button_right" href="{$url_download}{if $user->is_logged()}&id={else}&rpp=%26id%3D{/if}{$ppt->get_obj_id()}">Download</a>{/if}
+		<!--<a class="button button_right" href="{page_url_f page=download id=$ppt->get_obj_id()}">Download</a>-->
+	{/if}
+	
+	{if $user->is_logged() && $ppt->get_converted()}
+		<a id="add_fav_{$ppt->get_obj_id()}" class="button button_right" style="{if $ppt->get_favourite()}display: none;{/if}" href="#"
+		onclick="$.post('{page_url page=editfav}', {literal}{{/literal}obj_id:{$ppt->get_obj_id()}{literal}}{/literal}); add_remove_fav({$ppt->get_obj_id()}); return false;" > Favourite</a>
+		
+		<a id="remove_fav_{$ppt->get_obj_id()}" class="button button_right" style="{if !$ppt->get_favourite()}display: none;{/if}" href="#"
+		onclick="$.post('{page_url page=editfav}', {literal}{{/literal}obj_id:{$ppt->get_obj_id()}{literal}, remove:1}{/literal}); add_remove_fav({$ppt->get_obj_id()}); return false;">Remove </a>
+	{/if}
+	
+	{if !$no_view and $ppt->get_converted()}
+		<a class="button button_right" href="{page_url_f page=view id=$ppt->get_pimp_url()}">View</a>	
+	{/if}
+</div>  <!--4asta sus butonite-->

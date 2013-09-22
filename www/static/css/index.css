@@ -1,0 +1,21 @@
+body {
+	font-family: Verdana;
+	font-size: 13px;
+	color: #333;
+}
+
+#menu {
+	float: left;
+	border: 1px solid #FFEEAA;
+	margin-left: 10px;
+	width: 150px;
+}
+
+#layout {
+	float: left;
+	margin-left: 10px;
+	border: 1px ridge #ccddee;
+	background-color: #aabbcc;
+	text-align: center;
+	width: 880px;
+}

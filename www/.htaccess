@@ -1,0 +1,22 @@
+RewriteEngine On
+RewriteRule view/([a-z0-9_\-.]+)/([0-9]+)/?$ index.php?p=view&id=$1&page=$2 [NC,L]
+RewriteRule view/([a-z0-9_\-.]+)/?$ index.php?p=view&id=$1 [NC,L]
+
+RewriteRule my/([0-9]+)/?$ index.php?p=index&my=1&page=$1 [NC,L]
+RewriteRule my/?$ index.php?p=index&my=1 [NC,L]
+
+RewriteRule favorites/([0-9]+)/?$ index.php?p=index&fav=1&page=$1 [NC,L]
+RewriteRule favorites/?$ index.php?p=index&fav=1 [NC,L]
+
+RewriteRule popular/([0-9]+)/?$ index.php?p=index&top=1&page=$1 [NC,L]
+RewriteRule popular/?$ index.php?p=index&top=1 [NC,L]
+
+RewriteRule tag/([^\/]+)/([0-9]+)/?$ index.php?p=index&tag=$1&page=$1 [NC,L]
+RewriteRule tag/([^\/]+)/?$ index.php?p=index&tag=$1 [NC,L]
+
+RewriteRule downloaded/([0-9]+)/?$ index.php?p=index&downloaded=1&page=$1 [NC,L]
+RewriteRule downloaded/?$ index.php?p=index&downloaded=1 [NC,L]
+
+RewriteRule share/([0-9]+)/?$ index.php?p=view&id=$1&share=1 [NC,L]
+
+RewriteRule tags/?$ index.php?p=tags [NC,L]

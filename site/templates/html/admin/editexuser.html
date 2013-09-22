@@ -1,0 +1,69 @@
+{include file="admin/header.html"}
+<div id="layout">
+	{if $form.errors} 
+		<ul>
+			{foreach from=$form.errors item=error}
+				<li>
+					<b>{$error}</b>
+				</li>
+			{/foreach}
+		</ul>
+	{/if}
+	{if $smarty.get.added == 2}
+		You have added new User.
+	{/if}
+	{if $smarty.get.added == 1}
+		You have added new Admin.
+	{/if}
+	<form method="post" action="{$this_page|escape}">
+		{$form.act}
+		<table>
+			<tr>
+				<td>
+					<label for="user_login">{$user_login.label}:</label>
+				</td>
+				<td>
+					<input name="user_login" type="text" value="{$user_login.value|escape}" id="user_login" />
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<label for="user_pass">{$user_pass.label}:</label>
+				</td>
+				<td>
+					<input name="user_pass" type="password" id="user_pass" />
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<label for="user_passcheck">{$user_passcheck.label}:</label>
+				</td>
+				<td>
+					<input name="user_passcheck" type="password" id="user_passcheck" />
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<input type="checkbox" name="user_admin" id="user_admin" value="admin" {if $user_admin.value}checked="checked"{/if} />
+				</td>
+				<td>
+					<label for="user_admin">{$user_admin.label}</label>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<input type="checkbox" name="user_active" id="user_active" value="active" {if $user_active.value}checked="checked"{/if} />
+				</td>
+				<td>
+					<label for="user_active">{$user_active.label}</label>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<input type="submit" value="{if $smarty.get.id}Edit{else}Add{/if}" />
+				</td>
+			</tr>
+		</table>
+	</form>
+</div>
+{include file="admin/footer.html"}

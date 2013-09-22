@@ -1,0 +1,106 @@
+#modalOverlay {
+	
+	height: 100%;
+	width: 100%;
+	position: fixed;
+	left: 0;
+	top: 0;
+	z-index: 3000;
+	background-color: #000;
+	cursor: wait;
+}
+
+#modalContainer {
+	
+	height: 200px;
+	width: 598px;
+	position: fixed;
+	left: 48%;
+	top: 15%;
+	margin-left: -300px;
+	z-index: 3100;
+}
+
+#modalContainer a.modalCloseImg {
+	
+	background: url("../../../images/warning/x.gif") no-repeat;
+	width: 36px;
+	height: 36px;
+	display: inline;
+	z-index: 3200;
+	position: absolute;
+	top: 0px;
+	right: 0px;
+	cursor: pointer;
+}
+
+#button {
+	background:url("../../../images/but.gif") no-repeat;
+	width: 129px;
+	height: 39px;
+	position: relative;
+	left: 224.5px;
+	padding-bottom: 5px;
+	margin-top: 10px;
+	border-width: 0px 0px 0px 0px;
+	display: block;
+	font-family: Verdana;
+	font-size: 20px;
+	font-weight: bold;
+	text-align: center;
+	color: #000000;	
+	cursor: pointer;
+}
+
+#warning .left, .right, .middle {
+	float: left;
+	
+	font-size: 0;
+}
+
+#warning .left, .right {
+	width: 5px;
+	height: 5px;
+	
+	background-repeat: no-repeat;
+}
+
+#warning .upper .left {
+	background-image: url("../../../images/warning/tl.gif");
+}
+
+#warning .upper .middle {
+	border-top: 1px solid #E5E6E6;
+	width: 588px;
+	height: 4px;
+}
+
+#warning .lower .left {
+	background-image: url("../../../images/warning/bl.gif");
+	background-position: bottom left;
+}
+
+#warning .lower .right {
+	background-image: url("../../../images/warning/br.gif");
+	background-position: bottom right;
+}
+
+#warning .lower .middle {
+	width: 588px;
+	height: 4px;
+	border-bottom: 1px solid #E5E6E6;
+}
+
+#warning  {
+	height: 198px;
+	width: 598px;
+	clear: both;
+}
+
+#warning .content {
+	padding: 10px;
+	background-color: #FFFFFF;
+	border-left: 1px solid #E5E6E6;
+	border-right: 1px solid #E5E6E6;
+	clear: both;
+}

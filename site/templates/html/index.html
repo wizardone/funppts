@@ -1,0 +1,66 @@
+{include file="header.html"}
+
+{foreach from=$ppts item=ppt }
+<div class="box box_big">
+	<div class="upper">
+		<div class="left"></div><div class="middle"></div><div class="right"></div>	
+	</div>
+	<div style="clear: both;"></div>
+	
+	<div class="content">
+		<div class="inner_content">
+			
+			<div class="image_content">
+				{if $ppt->get_converted()}
+				<a href="{page_url_f page=view id=$ppt->get_pimp_url()}"><img src="{ $ppt->get_pic_url()}" alt="" /></a>
+				{else}
+				<img src="{$url_img}/x.gif" alt="" />
+				{/if}
+			</div>	<!-- 4asta sus snimkata  -->
+			
+			
+			<div>
+			<div class="description_content">
+				{if $ppt->get_converted()}
+				<a class="small_heading" href="{page_url_f page=view id=$ppt->get_pimp_url()}" >
+					<h3>{$ppt->get_title()|escape}</h3>
+				</a>
+				{else}
+				<h3>{$ppt->get_title()|escape}</h3>
+				{/if}
+			</div>	
+			
+			<div class="rating_content">
+					<span class="from"><b>From:</b> {$ppt->get_user()|escape}</span>
+					<div style="padding-top: 2px;">
+					<span class="span_left"><b>Views:</b> {$ppt->get_views()}</span>
+					<span class="span_left"><b>Downloads:</b> {$ppt->get_download()}</span>
+					<span class="span_left"><b>Comments:</b> {$ppt->get_comments()}</span>
+					</div>
+				</div>
+			<!-- 4asta sus ratinga -->
+				<br />
+				<div class="ppt_desc">
+				{if $ppt->get_converted()}
+					{$ppt->get_desc()}
+				{/if}
+				</div>
+			 </div>
+			
+		{include file="partial/buttons.html"}
+			<div style="clear: both"></div>
+		
+		</div>
+	</div>
+	<div class="lower">
+		<div class="left"></div><div class="middle"></div><div class="right"></div>	
+	</div> 
+</div>
+{foreachelse}
+ 	<h3 class="error">{$lang.no_presentations}</h3>
+{/foreach}
+<script type="text/javascript" src="http://cetrk.com/pages/scripts/0009/5523.js"> </script>	
+{if $pages > 1}
+	{include file="partial/pager.html" url=$pager_url}
+{/if}
+{include file="footer.html"}							

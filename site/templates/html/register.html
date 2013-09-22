@@ -1,0 +1,69 @@
+{include file="header.html"}
+	<div class="box box_big">
+		<div class="upper">
+			<div class="left"></div><div class="middle"></div><div class="right"></div>	
+		</div> 
+		<div class="content">
+			<div class="inner_content">
+				{foreach from=$form.global_errors item=error}
+					{$error}<br />
+				{/foreach}
+				<form method="post" action="{$this_page|escape}">
+					{foreach from=$form.fields.user_login.error item=logerror}
+							<div class="error">{$logerror}</div>
+					{/foreach}
+					{foreach from=$form.fields.user_email.error item=emailerror}
+							<div class="error">{$emailerror}</div>
+					{/foreach}
+					{foreach from=$form.fields.user_pass.error item=passerror}
+							<div class="error">{$passerror}</div>
+					{/foreach}
+					{foreach from=$form.fields.user_passcheck.error item=passcherror}
+							<div class="error">{$passcherror}</div>
+					{/foreach}
+					{foreach from=$form.fields.user_security.error item=secerror}
+							<div class="error">{$secerror}</div>
+					{/foreach}
+					<div style="padding-top: 10px">
+						{$form.act}
+						<h2>{$form.fields.user_login.label}:</h2>
+						<input class="input input_standard" type="text" name="user_login" value="{$form.fields.user_login.value}" id="user_login" />
+						
+					</div>
+					<div style="padding-top: 10px">
+						<h2>{$form.fields.user_email.label}:</h2>
+						<input class="input input_standard" type="text" name="user_email" value="{$form.fields.user_email.value}" id="user_email" />
+						
+					</div>
+					<div style="padding-top: 10px">
+						<h2>{$form.fields.user_pass.label}:</h2>
+						<input class="input input_standard" type="password" name="user_pass" value="{$form.fields.user_pass.value}" id="user_pass" />
+						
+					</div>
+					<div style="padding-top: 10px">
+						<h2>{$form.fields.user_passcheck.label}:</h2>
+						<input class="input input_standard" type="password" name="user_passcheck" value="{$form.fields.user_passcheck.value}" id="user_passcheck" />
+						
+					</div>
+					<div style="padding-top: 10px">
+						<h2>{$lang.text_security_image}:</h2>
+						<img id="user_security_image" alt="{$lang.text_security_image}" src="{$user_security_image}" />
+					</div>
+					<div style="padding-top: 10px">
+						<h2>{$form.fields.user_security.label}:</h2>
+						<input class="input input_standard" type="text" name="user_security" value="" id="user_security" />
+						
+					</div>
+					
+					<div style="margin-top: 15px;padding-left: 35px">
+						<input class="button" type="submit"  value="{$lang.button_register}" />
+					</div>												 								
+				
+				</form> 
+			</div>
+		</div>
+		<div class="lower">
+			<div class="left"></div><div class="middle"></div><div class="right"></div>	
+		</div> 
+	</div>	
+{include file="footer.html"}

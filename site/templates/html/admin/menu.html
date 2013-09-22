@@ -1,0 +1,19 @@
+		<div id="menu">
+			<ul>
+				{if $user->is_logged()}
+				<li>
+					<a href="{$menu_adduser}">Add User</a>
+				</li>
+				<li>
+					<a href="{$menu_edituser}">Edit User</a>
+				</li>
+				<li>
+					<a href="{$menu_logout}">Logout</a>
+				</li>
+				{else}
+				<li>
+					<a href="{$menu_login}">Login</a>
+				</li>
+				{/if}
+			</ul>
+		</div>

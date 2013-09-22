@@ -1,0 +1,22 @@
+{include file="header.html"}
+
+<div class="box box_big">
+	<div class="upper">
+		<div class="left"></div><div class="middle"></div><div class="right"></div>	
+	</div>
+	
+	<div class="content">
+		<div class="inner_content">
+		<h3 class="message">All tags</h3>
+			{foreach from=$all_tags item=tag}	
+				 <a href="{page_url_f tag=tag word=$tag.tag_word}" style="font-size: {math equation='(((tag - min_tagcount) / tagdiff) * (max_font - min_font)) + min_font' tag=$tag.tag_count min_tagcount=$min_tagcount tagdiff=$tag_countdiff max_font=20 min_font=9}px;" >{$tag.tag_word}</a>
+			{/foreach}
+		</div>
+	</div>
+	
+	<div class="lower">
+		<div class="left"></div><div class="middle"></div><div class="right"></div>
+	</div>
+</div>		
+
+{include file="footer.html"}

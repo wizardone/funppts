@@ -1,0 +1,124 @@
+{if $login_enabled}
+<a href="{$url_upload}">
+	<img src="{$url_img}/upload.jpg" class="upload_pic" alt="upload new presentation"/>
+</a>
+
+<div class="box box_small" style="margin-top: 12px">
+	<div class="upper">
+		<div class="left"></div><div class="middle"></div><div class="right"></div>	
+	</div> 
+	<div class="content" style="margin-top: -12px">
+		<div class="inner_content">
+			{if $user->is_logged()}
+				<ul class="main_menu">
+					<li><img src="{$url_img}/orange_button.png" alt=""/> <a href="{$menu_profile}" class="menu">{$lang.menu_profile}</a></li>
+					<li><img src="{$url_img}/orange_button.png" alt=""/> <a href="{page_url_f my=my}" class="menu">{$lang.menu_my_presentations}</a></li>
+					<li><img src="{$url_img}/orange_button.png" alt=""/> <a href="{page_url_f fav=favorites}" class="menu">{$lang.menu_favourites}</a></li>
+					<li><img src="{$url_img}/orange_button.png" alt=""/> <a href="{$menu_logout}" class="menu">{$lang.menu_logout}</a></li>
+				</ul>
+				<div style="clear: both;"></div>
+			{else}
+
+				<form method="post" action="{$url_login|escape}" style="text-align: center;">
+					
+					<div style="padding-top: 10px">
+						<input type="hidden" name="act" value="form" />
+						<input class="input input_standard" type="text" name="user_login" value="{$lang.form_label_user_login}" id="user_login" onfocus="give_focus(this);"/>
+					</div>
+					<div style="padding-top: 10px">
+						<input class="input input_standard" type="password" name="user_pass" value="{$lang.form_label_user_pass}" id="user_pass" onfocus="give_focus(this);" />
+					</div>
+					
+					<div style="padding-top: 10px">	
+					
+						<a href="{$menu_forgetpassword}">{$lang.menu_forget_password}?</a>
+						<span style="font-size: 12px;color: #95869D">|</span>
+						<a href="{$menu_register}">{$lang.menu_register}</a>
+					
+					</div>
+					<div>
+						<input class="button submit_reg" type="submit"  value="{$lang.button_login}" style="" />
+					</div>												 								
+				
+				</form> 
+			{/if}
+		</div>
+	</div>
+	<div class="lower">
+		<div class="left"></div><div class="middle"></div><div class="right"></div>	
+	</div> 
+</div>   <!-- panel za login register i forgot password -->
+{/if}
+
+<a href="http://itunes.apple.com/WebObjects/MZStore.woa/wa/viewSoftware?id=313671650&mt=8"><img src="{$url_img}/iphone_banner.jpg" alt="iFunPPS" /></A>
+
+{if $similar}
+<div class="box box_small" style="padding-top: 12px;">
+	<div class="upper">
+		<div class="left"></div><div class="middle"></div><div class="right"></div>	
+	</div> 
+		
+		<div class="content" style="height: 320px; overflow: auto;">
+			<div class="inner_content">
+				<h6 class="message" style="font-size: 16px;">Similar presentations</h6>
+				{foreach from=$similar item=row}
+					{if $row->get_converted()}
+					<div class="image_content">
+						<a class="small_heading" href="{page_url_f page=view id=$row->get_pimp_url()}" style="font-size: 14px;">{$row->get_title()|truncate:17:"...":true}</a>
+						<a href="{page_url_f page=view id=$row->get_pimp_url()}"><img src="{$row->get_pic_url()}" alt="" /></a>
+					</div>
+					{/if}
+				{/foreach}
+			
+			</div>
+		</div>	
+	<div class="lower">
+		<div class="left"></div><div class="middle"></div><div class="right"></div>	
+	</div> 
+</div> <!-- similar presentations -->
+{/if}	
+<div class="box box_small" style="padding-top: 12px">
+	<div class="upper">
+		<div class="left"></div><div class="middle"></div><div class="right"></div>	
+	</div> 
+	<div class="content">
+		<div class="inner_content">	
+			{foreach from=$popular_tags item=tag}	
+				<a href="{page_url_f tag=tag word=$tag.tag_word}" style="font-size: {math equation='(((tag - min_tagcount) / tagdiff) * (max_font - min_font)) + min_font' tag=$tag.tag_count min_tagcount=$min_tagcount tagdiff=$tag_countdiff max_font=20 min_font=9}px;" >{$tag.tag_word}</a>
+			{/foreach}
+			<div style="clear: both;"></div>
+			
+			<a href="{page_url_f page=tags}" style="float: right;">All tags&raquo;</a>
+			<div style="clear: both;"></div>
+		</div>
+	</div>
+	<div class="lower">
+		<div class="left"></div><div class="middle"></div><div class="right"></div>	
+	</div> 
+</div>    <!-- panel za search generirani anchori -->
+
+	{assign var=ppt_url value='http://www.microsoft.com/downloads/details.aspx?familyid=048dc840-14e1-467d-8dca-19d2a8fd7485&displaylang=en'}
+	<div style="padding-top: 20px;">	
+		<a href="{$ppt_url}" target="_blank" style="padding-top: 12px;">
+			<img src="{$url_img}/getppt.jpg" alt=""/>
+		</a>
+	</div>
+	
+
+<!--  <div class="box box_small" style="padding-top: 12px;">
+	<div class="upper">
+		<div class="left"></div><div class="middle"></div><div class="right"></div>	
+	</div> 
+	<div class="content">
+		<div class="inner_content">
+			ihjt0huty9htyhyt<br /> 
+			tjyi9thiyjhythyt<br />
+			tjhythjyytyhtht<br />
+			jhtyihty<br />
+		</div>
+	</div>
+	<div class="lower">
+		<div class="left"></div><div class="middle"></div><div class="right"></div>	
+	</div> 
+</div>
+ -->

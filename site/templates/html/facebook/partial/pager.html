@@ -1,0 +1,78 @@
+
+	<div class=" contentpager">
+	{if $page == 1}
+		<div class="pager empty">&laquo;</div>
+	{elseif $page > 1}
+		<a class="pager" href="facebook.php?p=index&amp;page={$page-1}">&laquo;</a>
+	{/if}
+	
+	{if $pages > 10}
+		{section name=pager start=0 loop=2}
+			{if $smarty.section.pager.iteration == $page}
+			<div class="pager empty">{$smarty.section.pager.iteration}</div>
+			{else}
+			<a class="pager" href="facebook.php?p=index&amp;page={$smarty.section.pager.index+1}">{$smarty.section.pager.iteration}</a>
+			{/if}
+		{/section} 
+		
+		{*first ...*}
+		
+		{if $page-2 > 2}
+			<a class="pager" href="facebook.php?p=index&amp;page={math equation="page - ((page - 3) / 2) - 1" page=$page format="%d"}">...</a>
+		{/if}
+		
+		{* show remaining *}
+		{if $page-2 > 2}
+			{assign var=startpager value=$page-1}
+		{else}
+			{assign var=startpager value=3}
+		{/if}
+		{if $page+1 < $pages - 2}
+			{assign var=endpager value=$page+1}
+		{else}
+			{assign var=endpager value=$pages-2}
+		{/if}
+		
+		{section name=pager start=$startpager-1 loop=$endpager}
+		{if $smarty.section.pager.index+1==$page}
+			<div class="pager empty">{$smarty.section.pager.index+1}</div>
+		{else}
+			<a class="pager" href="facebook.php?p=index&amp;page={$smarty.section.pager.index+1}">{$smarty.section.pager.index+1}</a>
+		{/if}
+		{/section}
+		
+		
+		{*second ...*}
+		{if $page + 1 < $pages - 2}
+			<a class="pager" href="facebook.php?p=index&amp;page={math equation="(pages - 1) - (((pages - 1) - page) / 2) + 1" page=$page endpager=$endpager pages=$pages format="%d}">...</a>
+		{/if}
+		
+		{section name=pager start=$pages-2 loop=$pages}
+		{if $smarty.section.pager.index+1==$page}
+			<div class="pager empty">{$smarty.section.pager.index+1}</div>
+		{else}
+			<a class="pager"  href="facebook.php?p=index&amp;page={$smarty.section.pager.index+1}">{$smarty.section.pager.index+1}</a>
+		{/if}	
+		{/section}
+		
+	{else}	
+		
+		{section name=pager  loop=$pages }
+			
+		
+			{if $smarty.section.pager.iteration==$page}
+				<div class="pager empty" >{$smarty.section.pager.iteration}</div>
+			{else}
+				<a class="pager" href="facebook.php?p=index&amp;page={$smarty.section.pager.iteration}">{$smarty.section.pager.iteration}</a>
+			{/if}
+		
+		{/section}
+	{/if}
+	
+	{if $page == $pages}
+			<div class="pager empty" style="">&raquo;</div>
+		{elseif $page < $pages}
+			<a class="pager" href="facebook.php?p=index&amp;page={$page+1}">&raquo;</a>
+		{/if}
+	</div>
+	

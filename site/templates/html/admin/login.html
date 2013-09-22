@@ -1,0 +1,33 @@
+{include file="admin/header.html"}
+	<div id="fg"> 
+		{foreach from=$form.errors item=error}
+			{$error}<br />
+		{/foreach}
+		<form method="post" action="{$this_page}">
+		{$form.act}
+			<table >
+				<tr>
+					<td>
+						<label for="user_login">{$user_login.label}:</label>
+					</td>
+					<td>
+						<input type="text" name="user_login" value="{$user_login.value|escape}" id="user_login"/>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<label for="user_pass">{$user_pass.label}:</label>
+					</td>
+					<td>
+						<input type="password" name="user_pass" value="{$user_pass.value|escape}" id="user_pass"/>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<input type="submit" value="Enter"/>
+					</td>
+				</tr>
+			</table>
+		</form>
+	</div>
+{include file="admin/footer.html"}   

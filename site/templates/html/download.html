@@ -1,0 +1,52 @@
+{include file="header.html"}
+
+<div class="box box_big">
+	<div class="upper">
+		<div class="left"></div><div class="middle"></div><div class="right"></div>	
+	</div> 
+	<div style="clear: both;"></div>
+	<div class="content">
+		<div class="inner_content">
+			<a class="small_heading" href="{page_url_f page=view id=$ppt->get_pimp_url()}" >
+				<h3 class="message">{$ppt->get_title()}</h3>
+			</a>
+			
+			<div class="image_content">
+			 	<a href="{page_url_f page=view id=$ppt->get_pimp_url()}"><img src="{ $ppt->get_pic_url()}" /></a>
+			</div>	<!-- 4asta sus snimkata  -->
+			
+			<div class="rating" >
+				<span class="span_left"><b>From:</b> {$ppt->get_user()|escape}</span>
+				<span style="font-size: 11px; display: block;"><b>Views:</b> {$ppt->get_views()}</span>
+			</div> <!-- 4asta s ratinga -->
+			
+			<div class="description">
+				{$ppt->get_desc()}
+			</div> <!-- 4asta s teksta -->
+			<br />
+			<div style="clear: both;"></div>
+			<h3>Favourite tags:</h3>
+			<div class="tag">
+				{foreach from=$tags item=tag}
+					<a href="{page_url_f tag=tag word=$tag}" style="font-size: 18px;" >{$tag}</a>
+				{/foreach}
+			</div>
+			<div style="clear: both"></div>
+			<br />
+			<div class="message" style="font-size: 13px;">If download does not start within 5 seconds please click <a href="{page_url_this do_download=1}" style="font-size: 18px; font-weight: bold;">here</a></div>
+			<br />
+			
+			<script type="text/javascript">addthis_pub  = 'alabala';</script>
+				<a href="http://www.addthis.com/bookmark.php" onmouseover="return addthis_open(this, '', '[URL]', '[TITLE]')" onmouseout="addthis_close()" onclick="return addthis_sendto()">
+					<img src="http://s9.addthis.com/button1-addthis.gif" width="125" height="16" border="0" alt="" />
+				</a>
+			<script type="text/javascript" src="http://s7.addthis.com/js/152/addthis_widget.js"></script>
+			
+		</div>
+	</div>
+		<div class="lower">
+			<div class="left"></div><div class="middle"></div><div class="right"></div>	
+		</div>
+</div>
+
+{include file="footer.html"}

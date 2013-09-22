@@ -1,0 +1,101 @@
+{include file="header.html"}
+{assign var=user_data value=$user->get_data()}
+	<div class="box box_big">
+		<div class="upper">
+			<div class="left"></div><div class="middle"></div><div class="right"></div>	
+		</div> 
+		<div class="content">
+			<div class="inner_content">
+				{foreach from=$form.errors item=error}
+					<div class="error" >{$error}</div><br />
+				{/foreach}
+				<form enctype="multipart/form-data" method="post" action="{$this_page|escape}">
+					<div class="left_float">
+					<div style="padding-top: 10px">
+						{$form.act}
+						<h2>{$form.fields.user_pass.label}:</h2>
+						<input class="input input_standard" type="password" name="user_pass" value="" id="user_pass" />
+						
+					</div>
+					<div style="padding-top: 10px">
+						<h2>{$form.fields.user_first_name.label}:</h2>
+						<input class="input input_standard" type="text" name="user_first_name" value="{$form.fields.user_first_name.value}" id="user_first_name" />
+						
+					</div>
+					<div style="padding-top: 10px">
+						<h2>{$form.fields.user_last_name.label}:</h2>
+						<input class="input input_standard" type="text" name="user_last_name" value="{$form.fields.user_last_name.value}" id="user_last_name" />
+						
+					</div>
+					<div style="padding-top: 10px">
+						<h2>{$form.fields.user_email.label}:</h2>
+						<input class="input input_standard" type="text" name="user_email" value="{$form.fields.user_email.value}" id="user_email" />
+						
+					</div>
+					</div>
+					
+					
+					<div style="padding-top: 10px">
+						<h2 style="padding-top: 7px;">{$form.fields.user_birth_date_year.label}</h2>
+						<select name="user_birth_date_year" class="combo">
+							{if $user_data.user_birth_date}
+								{html_options options=$form.fields.user_birth_date_year.data selected=$form.fields.user_birth_date_year.value}
+							{else}
+								{html_options options=$form.fields.user_birth_date_year.data selected=0}
+							{/if}
+						</select>
+						<h2 style="padding-top: 7px;">{$form.fields.user_birth_date_month.label}</h2>
+						<select name="user_birth_date_month" class="combo">
+							{if $user_data.user_birth_date}
+								{html_options options=$form.fields.user_birth_date_month.data selected=$form.fields.user_birth_date_month.value}
+							{else}
+								{html_options options=$form.fields.user_birth_date_month.data selected=0}
+							{/if}
+						</select>
+						<h2 style="padding-top: 7px;">{$form.fields.user_birth_date_day.label}</h2>
+						<select name="user_birth_date_day" class="combo">
+							{if $user_data.user_birth_date}
+								{html_options options=$form.fields.user_birth_date_day.data selected=$form.fields.user_birth_date_day.value}
+							{else}
+								{html_options options=$form.fields.user_birth_date_day.data selected=0}
+							{/if}
+						</select>
+					</div>
+					<div style="padding-top: 10px">
+						<h2>{$form.fields.user_sex.label}:</h2>
+						<select name="user_sex" class="combo">
+							{html_options  options=$form.fields.user_sex.data selected=$form.fields.user_sex.value} 
+						</select>
+					</div>
+					
+					<div style="clear: both;"></div>
+			
+					<div style="padding-top: 10px">
+						<h2>{$form.fields.user_interests.label}:</h2>
+						<textarea name="user_interests" id="user_interests" cols="60" rows="4" >
+							{$form.fields.user_interests.value}
+						</textarea>
+					</div>
+					
+					<div style="padding-top: 10px">
+						<h2>{$form.fields.user_avatar.label}: ({$lang.menu_avatar_format})</h2>
+						
+						{if $form.fields.user_avatar.value}
+							<img src="{$user->get_avatar()}"  /><br />
+							<a href="{$this_page}&amp;del=1" class="button_strange">{$lang.menu_delete_avatar}</a>
+						{else}
+							<input type="file" name="user_avatar" id="user_avatar" class="input" />
+						{/if}
+					</div>
+					
+					<div style=" margin-top: 10px;">
+						<input class="button" type="submit" value="{$lang.button_update_profile}" />
+					</div>
+				</form>
+			</div>
+		</div>
+		<div class="lower">
+			<div class="left"></div><div class="middle"></div><div class="right"></div>	
+		</div> 
+	</div>	
+{include file="footer.html"}

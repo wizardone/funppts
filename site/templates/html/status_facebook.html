@@ -1,0 +1,99 @@
+<style type="text/css">
+	@import url("static/css/jquery/simple_modal/warning.css");
+</style>
+
+<!--[if lt IE 7]> 
+	<style type="text/css">
+		@import url("static/css/jquery/simple_modal/simple_modal_ie.css");
+	</style>
+<![endif]-->				
+		
+<script type="text/javascript" src="static/js/jquery/simple_modal/jquery.simplemodal-1.0.1.js"></script>
+
+<script type="text/javascript">
+   //<![CDATA[
+   {literal}
+   
+	$(document).ready(function()
+   	{
+		jQuery('#warning').modal({cloneContent: false}, {onOpen: function(dialog) {$('.content_face').css('display', 'none')}})
+	});
+   
+   function onsubmitted(data, status)
+   {
+   		if(data)
+   		{
+   			$('#form_error').html(data);
+   		}
+   		else
+   		{
+   			$("a.modalClose").trigger('click');
+   		}
+   }
+   
+   function on_created(data)
+   {
+   		if(data)
+   		{
+   			var face_data = data.split(',');
+   			var face_user = face_data[0];
+   			var face_pass = face_data[1];
+   			
+   			$('.content_face').css('display', 'none');
+   			$('.face_content').css('display', 'block');
+   			$('.face_content').html("Your Fun,PPS!Fun! details are:"+"<br />"+"Username: "+face_user+"<br />"+ "Password: "+face_pass+"."+"<input type='button' class='button modalClose' value='Ok' style='margin-left: 37%;'/>");
+   			$('.button').click(function (){
+   				$("a.modalClose").trigger('click');
+   			});
+   		}
+   		else
+   		{
+   			$('.content_face').css('display', 'none');
+   			$('.face_content').css('display', 'block');
+   			$('face_content').html('An unknown error occured.');
+   		}
+   }
+   {/literal}
+   //]]>
+</script>
+
+<div id="warning" style="display: none;">
+
+	<div id="modal">
+		<div class="upper" style="background-color: none">
+			<div class="left"></div><div class="middle"></div>
+		</div>
+		
+		
+		<div class="face_content" style="display: none;">
+			
+		</div>	
+		<div class="content_face">
+			<div id="form_error" class="error" style="margin-bottom: 5px;"></div>
+		<div class="left_float">
+			<div class="message" style="font-size: 18px;">If you don`t have an <br />account on Fun, PPS!Fun! <br />click <a href="#" onclick="$.post('{page_url_this_custom page=register}', null, on_created); return false;">here</a> to automatically<br /> receive one!<br />Otherwise you can login<br /> to the right.</div>
+		</div>
+		<div class="left_float">
+	{literal}
+			<form method="post" action="" onsubmit="$.post('{/literal}{page_url_this_custom page=login}{literal}', {user_login: $('#user_login').val(), user_pass: $('#user_pass').val()}, onsubmitted, 'text'); return false;">
+	{/literal}		
+				
+				<label>
+					<input type="text" class="input input_standart" value="Username" id="user_login" name="user_login" onclick="give_focus(this);"/>
+				</label>
+				<label>
+					<input type="password" class="input input_standart" value="Password" id="user_pass" name="user_pass" onclick="give_focus(this);"/>
+				</label>
+				 <input type="submit" class="button submit_reg" value="Login"/> 
+			</form>
+		</div>
+			<div style="clear: both;"></div>
+		</div>
+		
+	 	
+		<div class="lower">
+			<div class="left"></div><div class="middle"></div><div class="right"></div>	
+		</div>
+	</div>	 
+	
+</div>

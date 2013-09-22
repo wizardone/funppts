@@ -1,0 +1,14 @@
+
+<div class="button_content">
+
+	{if $ppt->get_converted()}
+		<!-- <a class="button button_right" href="{page_url page=view id=$ppt->get_obj_id() share=1}#share" >Send</a>-->
+		<a class="button button_right" href="http://funppsfun.com/index.php?p=view&id={$ppt->get_obj_id()}&share=1#share" target="_blank">Send</a>	
+		<!--<a class="button button_right" href="{$url_download}{if $user->is_logged()}&id={else}&rpp=%26id%3D{/if}{$ppt->get_obj_id()}">Download</a>-->
+		<a class="button button_right" href="{page_url_this_custom page=download id=$ppt->get_obj_id()}">Download</a>
+	{/if}
+	
+	{if !$no_view and $ppt->get_converted()}
+		<a class="button button_right" href="{page_url_this_custom page=view id=$ppt->get_obj_id()}">View</a>	
+	{/if}
+</div>  <!--4asta sus butonite-->

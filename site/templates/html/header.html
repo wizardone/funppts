@@ -1,0 +1,158 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<title>
+			{assign var=title value='Fun, PPS! Fun!'}
+			
+			{if $page_name}
+				{$title|escape}: {$page_name|escape}
+			{elseif !$page_name and !$ppt_title and $myppt}
+				{$title|escape}: My Presentations	
+			{elseif !$page_name and !$ppt_title and $favppt}
+				{$title|escape}: My Favourites
+			{elseif !$page_name and !$ppt_title and $topppt}
+				{$title|escape}: Most Popular
+			{elseif !$page_name and !$ppt_title and $downppt}
+				{$title|escape}: Most Downloaded
+			{elseif !$page_name and !$ppt_title}
+				{$title|escape}							
+			{/if}
+			
+			{if $ppt_title}
+			 	{$title}: {$ppt_title|escape}
+			{/if}
+		</title>
+		
+		{foreach from=$urls_js item=js}
+			<script type="text/javascript" src="{$js}"></script>
+		{/foreach}
+		
+		{if $urls_css}
+			<style type="text/css">
+				{foreach from=$urls_css item=css}
+					@import url("{$css}");
+				{/foreach}
+			</style>
+		{/if}
+		
+		<script type="text/javascript">
+			//<![CDATA[
+			
+			$(document).ready(function()
+			{literal}{
+				$.ifixpng("{/literal}{$url_img}/pixel.gif{literal}");
+				$('img[@src$=.png]').ifixpng();
+			}{/literal});
+			
+			//]]>
+		</script>
+		
+		
+		{assign var=meta_default value='funny pps, funny powerpoint, slide show, funny powerpoint slides, funny pps'}
+		{assign var=fun value='Fun Powerpoints'}
+		{assign var=meta_main_desc value='Find the coolest PowerPoint presentations and share them with everyone!'}
+		
+		{if $meta_refresh}
+			<meta http-equiv="refresh" content="5;url={page_url_this do_download=1}"/>
+		{/if}
+			
+		{if $meta_key}
+			<meta name="keywords" content="{$fun},{$meta_key|escape}"/>
+		{else}
+			<meta name="keywords" content="{$fun},{$meta_default}"/>	
+		{/if}
+		
+		{if $meta_desc}
+				<meta name="description" content="{$meta_desc|escape}"/>
+		{else}
+				<meta name="description" content="{$meta_main_desc|escape}"/>
+		{/if}	
+		
+		<link rel="shortcut icon" href="{$url_img}/favicon.ico" type="image/x-icon" />
+		
+		<link rel="alternate" type="application/rss+xml" title="Fun, PPS! Fun! Latest powerpoint presentations" href="{$url_rss}/latest.rss" />
+		<link rel="alternate" type="application/rss+xml" title="Fun, PPS! Fun! Most popular powerpoint presentations" href="{$url_rss}/popular.rss" />
+		<link rel="alternate" type="application/rss+xml" title="Fun, PPS! Fun! Most downloaded powerpoint presentations" href="{$url_rss}/downloaded.rss" />
+
+	</head>
+	<body>	
+							{if $status_title || $status_message}
+								{include file="status_window.html"}
+							{/if}
+		
+		
+		<div id="container">
+			
+				<div id="heading">
+					<a href="{page_url_f}"><h1>Fun, PPS! Fun!</h1></a>
+				</div>	
+		
+			<div id="left_container">
+				<div class="box box_main">
+					<div class="upper upper_main">
+						<div class="left"><div class="left_inner"></div></div><div class="middle">
+						
+							{*if $heading}
+								<h3 style="margin-left:25px;margin-top: 10px; color: #A2A2A2;"><span style="font-size: 25px;">Find</span>  <span style="font-size: 38px">cool</span><span style="font-size: 25px;"> PowerPoint<span style="font-size: 20px;">®</span> presentations <br /> and </span> <span style="font-size: 38px">send them to your friends!</span>
+								</h3>
+							{else}
+								<h2 style="margin-left:25px;margin-top: 10px; color: #A2A2A2;"><span style="font-size: 25px;">Find</span> <span style="font-size: 38px">cool</span><span style="font-size: 25px;"> PowerPoint<span style="font-size: 20px;">®</span> presentations <br /> and </span><span style="font-size: 38px">send them to your friends!</span>
+								</h2>
+							{/if*}
+							
+							<script type="text/javascript"><!--
+                    google_ad_client = "pub-0992871249436300";
+                    /* 728x90, created 10/5/08 */
+                    google_ad_slot = "4163590933";
+                    google_ad_width = 728;
+                    google_ad_height = 90;
+                    //-->
+                    </script>
+                    <script type="text/javascript"
+                    src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+              </script>
+                                                
+                                                
+						</div>	
+						<div class="right"></div>	
+					</div> 
+					<div class="content content_main">
+						<div class="inner_content">
+						
+							<!--  <div id="ads">
+								Ads
+							</div>
+							-->
+							<br />
+							
+							<div id="left_panel">
+							
+							<div class="menu_bg">
+
+								<div  class="tab_container {if $is_home}selected{/if}">
+									<div class="menu_f"></div>
+									<div class="menu_main"><a href="{page_url_f}">Newest</a></div>
+									<div class="menu_l"></div>
+									
+									<div style="clear: both;"></div>
+								</div>
+									
+								<div class="tab_container {if $topppt}selected{/if}">
+									<div class="menu_f"></div>
+									<div class="menu_main"><a href="{page_url_f top=popular}">Popular</a></div>
+									<div class="menu_l"></div>
+									
+									<div style="clear: both;"></div>	
+								</div>
+								
+								{if $login_enabled}
+								<div  class="tab_container {if $downppt}selected{/if}">
+									<div class="menu_f"></div>
+									<div class="menu_main"><a href="{page_url_f top=downloaded}">Most Downloaded</a></div>
+									<div class="menu_l"></div>
+									
+									<div style="clear: both;"></div>	
+								</div>
+								{/if}
+							
+							</div>

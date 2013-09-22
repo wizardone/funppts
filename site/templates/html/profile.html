@@ -1,0 +1,79 @@
+{include file="header.html"}
+	<div class="box box_big">
+		<div class="upper">
+			<div class="left"></div><div class="middle"></div><div class="right"></div>	
+		</div> 
+		<div class="content">
+			<div class="inner_content">
+			<div class="left_float">
+				<div style="padding-top: 10px;">
+					<h2>{$lang.form_label_user_login}:</h2>
+					{$user_data.user_login}
+				</div>
+				
+				<div style="padding-top: 10px">
+					<h2>{$lang.form_label_user_first_name}:</h2>
+					{if $user_data.user_first_name}
+						{$user_data.user_first_name}
+					{else}
+						-------	
+					{/if}
+				</div>
+				<div style="padding-top: 10px">
+					<h2>{$lang.form_label_user_last_name}:</h2>
+					{if $user_data.user_last_name}
+						{$user_data.user_last_name}
+					{else}
+						-------
+					{/if}	
+				</div>
+				<div style="padding-top: 10px;">
+					<h2>{$lang.form_label_user_email}:</h2>
+					{$user_data.user_email}
+				</div>
+				<div style="padding-top: 10px;">
+					<h2>{$lang.form_label_user_birth_date_day}/{$lang.form_label_user_birth_date_month}/{$lang.form_label_user_birth_date_year}:</h2>
+					{if $user_data.user_birth_date}
+						{$user_data.user_birth_date|date_format:"%d / %m / %Y"} 
+					{else}
+						-- / -- / --
+					{/if}
+					{$user_data.user_birth_date_day}
+				</div>
+				<div style="padding-top: 10px;">
+					<h2>{$lang.form_label_user_sex}:</h2>
+					{if $user_data.user_sex == 0}
+						{$lang.text_undefined}
+					{elseif $user_data.user_sex == 1}
+						{$lang.text_male}
+					{elseif $user_data.user_sex == 2}
+						{$lang.text_female}
+					{/if}
+				</div>
+				<div style="padding-top: 10px;">
+					<h2>{$lang.form_label_user_interests}:</h2>
+					{if $user_data.user_interests}
+						{$user_data.user_interests}
+					{else}
+						-------
+					{/if}
+				</div>
+				
+			</div>	
+				<div style="padding-top: 10px;">
+					<h2>{$lang.form_label_user_avatar}:</h2>
+					
+						<img src="{$user->get_avatar()}" alt="" />
+				
+				</div>
+				
+				
+			<div style="clear: both;"></div>	
+				<a href="{$menu_editprofile}" class="button button_edit">Edit</a>
+			</div>
+		</div>
+		<div class="lower">
+			<div class="left"></div><div class="middle"></div><div class="right"></div>	
+		</div> 
+	</div>	
+{include file="footer.html"}

@@ -1,0 +1,17 @@
+
+#bg 
+{
+	background-color: #aabbcc;
+}
+
+#fg
+{
+	width: 220px;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 200px;
+	background-color: #ccddee;
+	border-style: double;
+	border-color: #cceeaa;
+	border-width: 6px;
+}

@@ -1,0 +1,53 @@
+{include file="header.html"}
+
+<div class="box box_big">
+
+	<div class="upper">
+		<div class="left"></div><div class="middle"></div><div class="right"></div>	
+	</div>
+	<div style="clear: both;"></div>
+		
+		<div class="content">
+			<div class="inner_content" id="inner_content"> 
+			
+			<div id="error">
+				{foreach from=$form.errors item=error}
+					<div class="error">{$error}<br /></div>
+				{/foreach}
+			</div>
+			
+				<form action="{page_url_this|escape}" method="post" enctype="multipart/form-data" >
+				{$form.act}
+					<fieldset>
+						<legend>Upload your presentation</legend>
+						
+						<label>Upload presentation:<br /> <input type="file" name="ppt_file" class="input"/></label>
+						<label>Title:<br /><input type="text" name="ppt_title"  class="input" value="{$form.fields.ppt_title.value|escape}"/></label>
+						<label>Presentation description:<textarea name="ppt_description" rows="8" cols="60">{$form.fields.ppt_description.value|escape}</textarea></label>
+						<label>Enter tag words:<br /><textarea name="ppt_tags" rows="4" cols="30">{$form.fields.ppt_tags.value|escape}</textarea></label>
+						
+						
+						<div class="form_text">By clicking “Upload Presentation” you declare that you are not submitting content that is obscene, racist, pornographic, abusive, harassing, threatening, pirated, unlawful or promotes or encourages illegal activity.
+						 	You declare that you’re not submitting material that infringes any copyright, trademark, patent or trade secret without the third party's written consent.
+						 	You also declare that you’re not submitting any viruses, worms, macros, trojan horses or other items of a contaminating or destructive nature.
+							Fun, PPS! Fun! reserves the right to remove and delete any content or user submissions from the site without notice.
+						</div>
+						
+						<input type="submit" class="submit_ppt" value="" onclick="show_loader(); return true"/>
+						
+						<div id="loader"> 
+							<img src="{$url_img}/ajax-loader.gif"/>
+						</div>
+						
+					</fieldset>
+				</form>
+		
+			</div>
+		</div>
+	<div class="lower">
+		<div class="left"></div><div class="middle"></div><div class="right"></div>	
+	</div> 
+
+</div>		
+
+{include file="footer.html"}

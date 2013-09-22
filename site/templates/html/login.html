@@ -1,0 +1,56 @@
+{include file="header.html"}
+
+<div class="box box_big">
+	<div class="upper">
+		<div class="left"></div><div class="middle"></div><div class="right"></div>	
+	</div> 
+	<div class="content">
+		<div class="inner_content">
+			{foreach from=$form.global_errors item=error}
+				<div class="error">{$error}</div>
+			{/foreach}
+			<div class="left_float">
+				<form method="post" action="{$url_login|escape}">
+					
+					<div style="padding-top: 10px">
+						{$form.act}
+	
+						<h2>{$form.fields.user_login.label}:</h2>
+						<input class="input input_standard" type="text" name="user_login" value="{$form.fields.user_login.value}" id="user_login" />
+						
+					</div>
+					<div style="padding-top: 10px">
+						
+						<h2>{$form.fields.user_pass.label}:</h2>
+						<input class="input input_standard" type="password" name="user_pass" value="" id="user_pass" />	
+					</div>
+					<div style="padding-top: 10px">
+						{$form.fields.remember.label}
+						<input type="checkbox" name="remember" id="remember" />
+					</div>
+					<div style="padding-top: 10px">
+						<a href="{$menu_forgetpassword}">{$lang.menu_forget_password}?</a>
+						<span style="font-size: 12px;color: #95869D">|</span>
+						<a href="{$menu_register}">{$lang.menu_register}</a>
+					
+					</div>
+					<div style="margin-top: 15px;padding-left: 35px">
+						<input class="button" type="submit"  value="{$lang.button_login}" />
+					</div>												 								
+				
+				</form> 
+			</div>
+			{if $upload}
+			<div class="message">{$lang.msg_must_log_upload}</div>
+			{elseif $download}
+			<div class="message">{$lang.msg_must_log_download}</div>
+			{/if}
+			<div style="clear: both;"></div>
+		</div>
+	</div>
+	<div class="lower">
+		<div class="left"></div><div class="middle"></div><div class="right"></div>	
+	</div> 
+</div>
+{include file="footer.html"}
+   

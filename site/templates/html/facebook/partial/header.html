@@ -1,0 +1,56 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<title>Fun, PPS!Fun!</title>
+		{if $urls_css}
+			<style type="text/css">
+				{foreach from=$urls_css item=css}
+					@import url("{$css}");
+				{/foreach}
+			</style>
+		{/if}
+		{foreach from=$urls_js item=js}
+			<script type="text/javascript" src="{$js}"></script>
+		{/foreach}
+		
+		
+		{if $meta_refresh}
+			<meta http-equiv="refresh" content="5;url={page_url_this_custom page=download id=$ppt->get_obj_id() do_download=1}"/>
+		{/if}
+	</head>
+	
+	<body>
+	
+							{if $fb_status}
+								{include file="status_facebook.html"}
+							{/if}
+		
+	 <div id="heading"><a href="{page_url_this_custom page=index top=null}"><h1>Fun, PPS! Fun!</h1></a></div>
+		
+	<div id="left_panel">
+		
+		<div class="menu_bg">
+			<div  class="tab_container {if $is_home}selected{/if}">
+				<div class="menu_f"></div>
+				<div class="menu_main"><a href="{page_url_this_custom page=index top=null}">Newest</a></div>
+				<div class="menu_l"></div>
+				
+				<div style="clear: both;"></div>
+			</div>
+				
+			<div class="tab_container {if $topppt}selected{/if}">
+				<div class="menu_f"></div>
+				<div class="menu_main"><a href="{page_url_this_custom top=popular}">Popular</a></div>
+				<div class="menu_l"></div>
+				
+				<div style="clear: both;"></div>
+			</div>
+			
+			<div  class="tab_container {if $downppt}selected{/if}">
+				<div class="menu_f"></div>
+				<div class="menu_main"><a href="{page_url_this_custom top=downloaded}">Most Downloaded</a></div>
+				<div class="menu_l"></div>
+				
+				<div style="clear: both;"></div>	
+			</div>
+		</div>	

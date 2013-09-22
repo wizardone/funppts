@@ -1,0 +1,238 @@
+{include file="header.html"}
+
+<div class="box box_big">
+	<div class="upper">
+		<div class="left"></div><div class="middle"></div><div class="right"></div>	
+	</div>
+	<div style="clear: both;"></div>
+	<div class="content">
+		<div class="inner_content">
+		{if $heading}
+			<h2 class="message">{$ppt->get_title()}</h2>
+		{else}
+			<h3 class="message">{$ppt->get_title()}</h3>
+		{/if}	
+			<div class="image_content" id="presentation_container" >
+				{if $ppt->get_converted()}
+				
+				<div id="presentation"></div>
+				
+				<script type="text/javascript">
+					swfobject.embedSWF("{$url_img}/player.swf", "presentation", "550", "413", "9.0.0", "{$url_img}/expressInstall.swf",
+					 {literal}{{/literal}
+					 	id:{$ppt->get_obj_id()},
+					  	totalSlides:{$ppt->get_slides_count()},
+					   	url:'{$ppt->get_pics_url()}',
+					   	urlSimilar:'{page_url_full page=similar}',
+					   	urlMain:'{page_url_full_f}'
+					 {literal}}{/literal},
+					 {literal}{{/literal}wmode: 'opaque'{literal}}{/literal});
+				</script>
+				
+				{else}
+				<img src="{$url_img}/x.gif" alt=""/>
+				{/if}
+			</div>	<!-- 4asta sus snimkata  -->
+			<br />
+			
+			{include file="partial/buttons.html" no_view=1}
+			<div style="clear: both"></div>
+			
+			{if $ppt->get_obj_id() == 223}
+				<div style="float: left; width: 15%;">
+					<script type="text/javascript">
+						digg_url = 'http://funppsfun.com/view/george_bush_story';
+					</script>
+					<script src="http://digg.com/tools/diggthis.js" type="text/javascript"></script>
+				</div>
+				
+				<div style="float: left; width: 15%;">
+					<script>reddit_url='http://funppsfun.com/view/george_bush_story'</script>
+					<script>reddit_title='George Bush story'</script>
+					<script type="text/javascript" src="http://www.reddit.com/button.js?t=2"></script>
+				</div>
+				
+				<div class="rating" style="float: left; width: 65%;">
+					<b>From:</b> {$ppt->get_user()|escape}<br />
+					<b>Views:</b> {$ppt->get_views()}<br />
+					<b>Downloads:</b> {$ppt->get_download()}
+				</div> <!-- 4asta sus ratinga -->
+				
+				<div style="clear: both;"></div>
+			{else}
+				<div class="rating">
+					<b>From:</b> {$ppt->get_user()|escape}<br />
+					<b>Views:</b> {$ppt->get_views()}<br />
+					<b>Downloads:</b> {$ppt->get_download()}
+				</div> <!-- 4asta sus ratinga -->
+			{/if}
+			
+			
+			<div class="description">
+				{$ppt->get_desc()}
+			</div> <!-- 4asta sus teksta -->
+			<br />
+			<h3>Tags:</h3>
+			<div class="tag">
+				{foreach from=$tags item=tag}
+					<a href="{page_url_f tag=tag word=$tag}" class="tag" >{$tag|escape}</a>
+				{/foreach}
+			</div>
+			
+			<div style="clear: both;"></div>
+			<br />
+			
+			<form>
+			<div class="left_float">
+				<label for="inputa">URL</label>
+					<input type="text" onClick="javascript:this.focus();this.select();" class="input" id="inputa"  value="{page_url_full_f page=view id=$ppt->get_pimp_url()}"/>
+				</div>
+				
+				<div class="left_float">
+					<label for="inputa_pps">Embed</label>
+						<input type="text" onClick="javascript:this.focus();this.select();" class="input" id="inputa_pps"  value="<object height='413' width='550'><param name='movie' value='http://funppsfun.com/static/images/player.swf' /><param name='wmode' value='opaque'/><param name='AllowScriptAccess' value='always'/><param name='flashvars' value='id={$ppt->get_obj_id()}&totalSlides={$ppt->get_slides_count()}&url=http://funppsfun.com{$ppt->get_pics_url()|urlencode}&urlSimilar={page_url_full|urlencode page=similar}&urlMain={page_url_full_f|urlencode}'/><embed src='http://funppsfun.com/static/images/player.swf' type='application/x-shockwave-flash' height='413' width='550'  AllowScriptAccess='always' flashvars='id={$ppt->get_obj_id()}&totalSlides={$ppt->get_slides_count()}&url=http://funppsfun.com{$ppt->get_pics_url()|urlencode}&urlSimilar={page_url_full|urlencode page=similar}&urlMain={page_url_full_f|urlencode}'></embed></object>
+						<div style='color: #7E6288;font-size: 13px;'>Download this presentation <a href='{page_url_full|escape page=download id=$ppt->get_obj_id()}'style='color: #FA7F00;font-size: 13px;text-decoration: none;'>here</a> or <a href='{page_url_full|escape page=upload}'style='color: #FA7F00;font-size: 13px; text-decoration: none;'>upload</a> you own.</div>"/>
+				</div>
+			</form>
+			<div style="clear: both;"></div>
+			
+			<br />
+			
+			<script type="text/javascript">addthis_pub  = 'alabala';</script>
+				<a href="http://www.addthis.com/bookmark.php" onmouseover="return addthis_open(this, '', '[URL]', '[TITLE]')" onmouseout="addthis_close()" onclick="return addthis_sendto()">
+					<img src="http://s9.addthis.com/button1-addthis.gif" width="125" height="16" border="0" alt="" />
+				</a>
+			<script type="text/javascript" src="http://s7.addthis.com/js/152/addthis_widget.js"></script>
+			
+		</div>
+	</div>
+	
+	<div class="lower">
+		<div class="left"></div><div class="middle"></div><div class="right"></div>
+	</div>
+</div>
+
+{if $share}
+<a name="share" />
+<div class="box box_big">
+	
+	<div class="upper">
+		<div class="left"></div><div class="middle"></div><div class="right"></div>	
+	</div> 
+	<div class="content">
+		<div class="inner_content">
+
+			<h3 class="message">{$lang.form_share} </h3>
+			<form action="{page_url_this}" method="post" >
+			
+				{foreach from=$shares.errors item=error}
+					<div class="error">{$error}</div>
+				{/foreach}
+
+					{$shares.act}
+					
+					<label>{$lang.form_label_from|escape}:<br /> <input type="text" name="share_from" class="input" value="{$user->get_name()|escape}"/></label>
+					<label>{$lang.form_label_to|escape}:<br /><input type="text" name="share_to" class="input"/></label>
+					<label>{$lang.form_label_comment|escape}:<br /><textarea rows="6" cols="60" name="share_comment"></textarea></label>
+					
+					<h2>{$lang.text_security_image}:</h2>
+					<img id="user_security_image" alt="{$lang.text_security_image}" src="{$user_security_image}" /><br />
+					<input type="text" class="input" name="user_security"/>
+					
+					<input type="submit" class="submit_share" value=""/>
+					
+					<div style="clear: both;"></div>
+					
+			</form>
+			
+		</div>
+	</div>
+	
+	<div class="lower">
+		<div class="left"></div><div class="middle"></div><div class="right"></div>	
+	</div> 
+
+</div>
+{/if}
+
+{if $login_enabled}
+<div class="box box_big">
+	<a name="comment" href="" alt=""></a>
+			<div class="upper">
+				<div class="left"></div><div class="middle"></div><div class="right"></div>	
+			</div> 
+		
+	<div class="content">
+		<div class="inner_content">	
+			{if $user->is_logged()}
+			<h3 class="message">{$lang.comment}</h3>
+			<div id="error">
+			{foreach from=$comments.errors item=error}
+				<div class="error">{$error}</div>
+			{/foreach}
+			</div>
+			<form action="{page_url_this}#comment" method="post" name="comment">
+				{$comments.act}
+				<textarea name="comment" rows="8" cols="66"></textarea>
+				<input type="submit" class="submit" value="" onclick="show_loader_small(); return true" />
+				
+				<div id="loader_small">
+					<img src="{$url_img}/ajax-loader.gif"/>
+				</div>
+				
+				<div style="clear: both;"></div>
+			</form>
+			
+			{/if}
+			
+			{if $total_comments && $user->is_logged()}
+				<h3 class="message">{$lang.comments}({$total_comments})</h3>
+				{foreach from=$comments_items item=item}
+					<div class="inn_content">
+						<div class="left_avatar">
+							<img src="{$user->get_avatar($item.user_id, $item.user_avatar)}" />
+						</div>
+							<b>from:</b> {if !$item.user_first_name && !$item.user_last_name}{$item.user_login}{else}{$item.user_first_name} {$item.user_last_name}{/if} ({$item.comment_date|date_format:"%Y/%m/%d"})<br />
+							<div class="description">{$item.comment_contents|wordwrap:45}</div>
+						
+						<div style="clear: both;"></div>
+					</div>
+						<div class="line"></div>
+				{/foreach}
+				
+			{elseif $total_comments and !$user->is_logged()}
+				<h3 class="message">{$lang.comments}({$total_comments})</h3>
+					{foreach from=$comments_items item=item}
+						<div class="inn_content">
+							<div class="left_avatar">
+								<img src="{$user->get_avatar($item.user_id, $item.user_avatar)}" />
+							</div>
+							
+								<b>from:</b> {if !$item.user_first_name && !$item.user_last_name}{$item.user_login}{else}{$item.user_first_name} {$item.user_last_name}{/if} ({$item.comment_date|date_format:"%Y/%m/%d"})<br />
+								<div class="description">{$item.comment_contents|wordwrap:45}</div>
+							
+							<div style="clear: both;"></div>
+						</div>
+							<div class="line"></div>
+					
+					{/foreach}
+				<div class="error" style="margin-top: 15px;"><a href="{$url_comment}" class="message">Login here or sign up</a> in order to add a comment!</div>
+			{elseif !$total_comments and $user->is_logged()}
+				<div class="error" style="margin-top: 5px;">{$no_comments}</div>	
+			{else}
+				<div class="error" style="margin-top: 5px;">{$no_comments}<a href="{$url_comment}" class="message">Login here or sign up</a> in order to add a comment!</div>
+			{/if}
+		</div>
+	</div>
+		<div class="lower">
+			<div class="left"></div><div class="middle"></div><div class="right"></div>	
+		</div> 
+
+</div>
+{/if}
+
+{if $pages > 1}
+	{include file="partial/pager.html" url=$pager_url}
+{/if}
+
+{include file="footer.html"}

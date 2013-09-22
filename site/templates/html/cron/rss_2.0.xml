@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Fun, PPS! Fun! {$feed_title|escape}</title>
+    <link>{$channel_url}</link>
+    <description>{$feed_desc|escape}</description>
+    <language>en</language>
+    <pubDate>{$smarty.now|date_format:"%a, %d %b %Y %H:%M:%S %z"}</pubDate>
+    <lastBuildDate>{$smarty.now|date_format:"%a, %d %b %Y %H:%M:%S %z"}</lastBuildDate>
+    <generator>Fun, PPS! Fun! feed generator</generator>
+    
+    <image>
+	    <title>Fun, PPS! Fun!</title>
+	    <url>http://funppsfun.com{$url_img}/rss_logo.png</url>
+	    <link>{$channel_url}</link>
+	    <description>{$feed_desc|escape}</description>
+	    <width>135</width>
+	    <height>75</height>
+	</image>
+ 
+ 	{foreach from=$items item=item}
+	    <item>
+	      <title>{$item.ppt_title|escape}</title>
+	      <link>http://funppsfun.com/view/{$item.ppt_url}</link>
+	      <description>
+	      	&lt;a href="http://funppsfun.com/view/{$item.ppt_url}"&gt;&lt;img src="http://funppsfun.com{$url_static}/ppts/pics/{$item.ppt_id}/thumb.jpg" hspace="5" alt="{$item.ppt_title|escape}" align="left" /&gt;&lt;/a&gt;
+	      	{$item.ppt_description|escape}
+	      </description>
+	      <pubDate>{$item.ppt_time|date_format:"%a, %d %b %Y %H:%M:%S %z"}</pubDate>
+	      <guid>http://funppsfun.com/view/{$item.ppt_url}</guid>
+	    </item>
+    {/foreach}
+  </channel>
+</rss>

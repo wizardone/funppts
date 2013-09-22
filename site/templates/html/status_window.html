@@ -1,0 +1,48 @@
+<style type="text/css">
+	@import url("static/css/jquery/simple_modal/warning.css");
+</style>
+
+<!--[if lt IE 7]> 
+	<style type="text/css">
+		@import url("static/css/jquery/simple_modal/simple_modal_ie.css");
+	</style>
+<![endif]-->				
+		
+<script type="text/javascript" src="static/js/jquery/simple_modal/jquery.simplemodal-1.0.1.js"></script>
+
+<script type="text/javascript">
+   //<![CDATA[
+   {literal}
+   
+	$(document).ready(function()
+   	{
+		jQuery('#warning').modal();
+	});
+   
+   {/literal}
+   //]]>
+</script>
+
+
+	
+<div id="warning" style="display: none">
+	<div id="modal">
+		<div class="upper" style="background-color: none">
+			<div class="left"></div><div class="middle"></div>
+		</div>
+		
+		<div class="content">
+			<div style="text-align: center; margin-top: 30px;">{$status_message}</div>
+			<input type="button" id="button" class="modalClose button" name="button" value="Ok" /> 
+		</div>
+		
+	 	
+		<div class="lower">
+			<div class="left"></div><div class="middle"></div><div class="right"></div>	
+		</div>
+	</div>	 
+	
+</div>
+
+
+	

@@ -1,0 +1,43 @@
+{include file="header.html"}
+	<div class="box box_big">
+		<div class="upper">
+			<div class="left"></div><div class="middle"></div><div class="right"></div>	
+		</div> 
+		<div class="content">
+			<div class="inner_content">
+				{foreach from=$form.global_errors item=error}
+					{$error}<br />
+				{/foreach}
+				<form method="post" action="{$this_page|escape}">
+					<div style="padding-top: 10px">
+						{$form.act}
+						<h2>{$form.fields.user_email.label}:</h2>
+						<input class="input input_standard" type="text" name="user_email" value="{$form.fields.user_email.value}" id="user_email" />
+						{foreach from=$form.fields.user_email.error item=emailerror}
+							{$emailerror}<br />
+						{/foreach}
+					</div>
+					<div style="padding-top: 10px">
+						<h2>{$lang.text_security_image}:</h2>
+						<img id="user_security_image" alt="{$lang.text_security_image}" src="{$user_security_image}" />
+					</div>
+					<div style="padding-top: 10px">
+						<h2>{$form.fields.user_security.label}:</h2>
+						<input class="input input_standard" type="text" name="user_security" value="" id="user_security" />
+						{foreach from=$form.fields.user_security.error item=secerror}
+							{$secerror}<br />
+						{/foreach}
+					</div>
+					
+					<div style="margin-top: 15px;padding-left: 35px">
+						<input class="button" type="submit"  value="{$lang.button_submit}" />
+					</div>												 								
+				
+				</form> 
+			</div>
+		</div>
+		<div class="lower">
+			<div class="left"></div><div class="middle"></div><div class="right"></div>	
+		</div> 
+	</div>
+{include file="footer.html"}
